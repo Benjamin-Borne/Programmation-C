@@ -1,11 +1,7 @@
 #include <stdio.h>
 
-int main(){
 
-    int num1, num2;
-
-    printf("Choisir deux nombres : ");
-    scanf("%d%d",&num1,&num2);
+int PGCD(int num1, int num2){
 
     while (num1 != num2){
 
@@ -20,6 +16,19 @@ int main(){
     }
     printf("PGCD : %d", num1);
     return num1;
+
+}
+
+
+int main(){
+    int num1, num2;
+
+    printf("Choisir deux nombres : ");
+    scanf("%d%d",&num1,&num2);
+
+    PGCD(num1, num2);
+
+    
 
 }
 
