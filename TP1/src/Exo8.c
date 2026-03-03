@@ -1,20 +1,14 @@
 #include <stdio.h>
 
-int calculatrice_if() {
-    float num1, num2, result;
-    char op;
+int calculatrice_if(float num1, float num2, char op) {
+    float result;
 
-    while (1) {
-
-        printf("Entrez une operation (+, -, *, /) ou 's' : ");
-        scanf(" %c", &op);   
+    while (1) { 
 
         if (op == 's') {
             break;
         }
 
-        printf("Entrez deux nombres : ");
-        scanf("%f %f", &num1, &num2);
 
         if (op == '+') {
             result = num1 + num2;
@@ -44,21 +38,14 @@ int calculatrice_if() {
 }
 
 
-int calculatrice_case(){
-    float num1, num2;
-    char op;
+int calculatrice_case(float num1, float num2, char op){
+    
 
     while (1) {
-
-    printf("Entrez une operation (+, -, *, /) ou 's' : ");
-    scanf(" %c", &op);   
 
     if (op == 's') {
         return 0;
     }
-
-    printf("Entrez deux nombres : ");
-    scanf("%f %f", &num1, &num2);
 
     switch(op) {
 
@@ -93,11 +80,34 @@ int calculatrice_case(){
 
 
 int main(){
+
     printf(" ----- Calculatrice IF ----\n");
-    calculatrice_if();
+
+    float num1,num2;
+    char op;
+
+    printf("Entrez une operation (+, -, *, /) ou 's' : ");
+    scanf(" %c", &op);   
+
+    printf("Entrez deux nombres : ");
+    scanf("%f %f", &num1, &num2);
+
+    calculatrice_if(num1,num2,op);
+
+
 
     printf(" ----- Calculatrice CASE ----\n");
-    calculatrice_case();
+
+    float num1, num2;
+    char op;
+
+    printf("Entrez une operation (+, -, *, /) ou 's' : ");
+    scanf(" %c", &op);
+
+    printf("Entrez deux nombres : ");
+    scanf("%f %f", &num1, &num2);
+
+    calculatrice_case(num1, num2, op);
     
     return 0;
 }
