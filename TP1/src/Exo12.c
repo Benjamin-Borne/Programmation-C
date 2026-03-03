@@ -32,3 +32,6 @@ int main() {
     nb_Voyelles(texte);
 
 }
+
+
+
