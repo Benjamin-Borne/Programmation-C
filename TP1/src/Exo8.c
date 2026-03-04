@@ -1,48 +1,34 @@
 #include <stdio.h>
 
-int calculatrice_if(float num1, float num2, char op) {
+float calculatrice_if(float num1, float num2, char op) {
     float result;
 
-    while (1) { 
 
-        if (op == 's') {
-            break;
+    if (op == '+') {
+        result = num1 + num2;
+    }
+    else if (op == '-') {
+        result = num1 - num2;
+    }
+    else if (op == '*') {
+        result = num1 * num2;
+    }
+    else if (op == '/') {
+        if (num2 == 0) {
+            printf("Erreur : division par zero !\n");
         }
-
-
-        if (op == '+') {
-            result = num1 + num2;
-        }
-        else if (op == '-') {
-            result = num1 - num2;
-        }
-        else if (op == '*') {
-            result = num1 * num2;
-        }
-        else if (op == '/') {
-            if (num2 == 0) {
-                printf("Erreur : division par zero !\n");
-                continue;
-            }
-            result = num1 / num2;
-        }
-        else {
-            printf("Operation non valide !\n");
-            continue;
-        }
-
-        printf("Resultat = %.2f\n\n", result);
+        result = num1 / num2;
+    }
+    else {
+        printf("Operation non valide !\n");
+        result = 0;
     }
 
-    return 0;
+    return result;
 }
 
 
-int calculatrice_case(float num1, float num2, char op){
-    
-
-    while (1) {
-
+float calculatrice_case(float num1, float num2, char op){
     if (op == 's') {
         return 0;
     }
@@ -50,64 +36,58 @@ int calculatrice_case(float num1, float num2, char op){
     switch(op) {
 
         case '+':
-            printf("Résultat : %f\n", num1 + num2);
+            return num1 + num2;
             break;
 
         case '-':
-            printf("Résultat : %f\n", num1 - num2);
+            return num1 - num2;
             break;
 
         case '*':
-            printf("Résultat : %f\n", num1 * num2);
+            return num1 * num2;
             break;
 
         case '/':
             if (num2 == 0) {
-                    printf("Erreur : division par zero !\n");
+                    puts("Division par zéro !");
                 }
-            printf("Résultat : %f\n", num1 / num2);
+            return num1 / num2;
             break;
         default:
-            printf("Other Value \n");
+            puts("Other Value \n");
+            return 0;
 
     }
-    }
-
-    return 0;
-
 }
 
 
 
 int main(){
-
-    printf(" ----- Calculatrice IF ----\n");
-
+    
     float num1,num2;
     char op;
 
-    printf("Entrez une operation (+, -, *, /) ou 's' : ");
-    scanf(" %c", &op);   
-
-    printf("Entrez deux nombres : ");
-    scanf("%f %f", &num1, &num2);
-
-    calculatrice_if(num1,num2,op);
-
-
-
-    printf(" ----- Calculatrice CASE ----\n");
-
-    float num1, num2;
-    char op;
-
-    printf("Entrez une operation (+, -, *, /) ou 's' : ");
-    scanf(" %c", &op);
-
-    printf("Entrez deux nombres : ");
-    scanf("%f %f", &num1, &num2);
-
-    calculatrice_case(num1, num2, op);
     
-    return 0;
+    while (1) {
+        puts("Entrez une operation (+, -, *, /) ou 's' : ");
+        scanf(" %c", &op);   
+
+        if (op == 's') {
+            return 0;
+        }
+
+        puts("Entrez deux nombres : ");
+        scanf("%f %f", &num1, &num2);
+
+
+        puts(" ----- Calculatrice IF ----\n");
+
+        printf("Resultat = %.2f\n\n", calculatrice_if(num1,num2,op));
+
+        puts(" ----- Calculatrice CASE ----\n");
+
+        printf("Résultat : %.2f\n", calculatrice_case(num1, num2, op));
+        
+        return 0;
+    }
 }
