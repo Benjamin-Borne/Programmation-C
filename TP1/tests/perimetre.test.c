@@ -9,70 +9,66 @@
 float circumference(float radius);
 float surface(float radius);
 
-// Comparaison float avec tolérance
 int float_eq(float a, float b) {
     return fabsf(a - b) < EPSILON;
 }
 
-// ---- Tests circumference ----
 
 void test_circumference_normal() {
     assert(float_eq(circumference(1.0f), 2.0f * PI));
-    printf("PASS test_circumference_normal\n");
+    puts("PASS test_circumference_normal");
 }
 
 void test_circumference_zero() {
     assert(float_eq(circumference(0.0f), 0.0f));
-    printf("PASS test_circumference_zero\n");
+    puts("PASS test_circumference_zero");
 }
 
 void test_circumference_large() {
     assert(float_eq(circumference(100.0f), 2.0f * PI * 100.0f));
-    printf("PASS test_circumference_large\n");
+    puts("PASS test_circumference_large");
 }
 
 void test_circumference_decimal() {
     assert(float_eq(circumference(2.5f), 2.0f * PI * 2.5f));
-    printf("PASS test_circumference_decimal\n");
+    puts("PASS test_circumference_decimal");
 }
 
-// ---- Tests surface ----
 
 void test_surface_normal() {
     assert(float_eq(surface(1.0f), PI));
-    printf("PASS test_surface_normal\n");
+    puts("PASS test_surface_normal");
 }
 
 void test_surface_zero() {
     assert(float_eq(surface(0.0f), 0.0f));
-    printf("PASS test_surface_zero\n");
+    puts("PASS test_surface_zero");
 }
 
 void test_surface_large() {
     assert(float_eq(surface(100.0f), PI * 100.0f * 100.0f));
-    printf("PASS test_surface_large\n");
+    puts("PASS test_surface_large");
 }
 
 void test_surface_decimal() {
     assert(float_eq(surface(3.5f), PI * 3.5f * 3.5f));
-    printf("PASS test_surface_decimal\n");
+    puts("PASS test_surface_decimal");
 }
 
-// ---- Runner ----
 
 int main(void) {
-    printf("=== Tests circumference ===\n");
+    puts("\n--- Tests circumference ---");
     test_circumference_normal();
     test_circumference_zero();
     test_circumference_large();
     test_circumference_decimal();
 
-    printf("\n=== Tests surface ===\n");
+    puts("\n--- Tests surface ---");
     test_surface_normal();
     test_surface_zero();
     test_surface_large();
     test_surface_decimal();
 
-    printf("\nTous les tests sont passes.\n");
+    puts("Tous les tests sont passes.");
     return 0;
 }
