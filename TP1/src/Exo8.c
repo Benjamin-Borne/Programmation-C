@@ -1,3 +1,4 @@
+#include <math.h>
 #include <stdio.h>
 
 float calculatrice_if(float num1, float num2, char op) {
@@ -16,8 +17,10 @@ float calculatrice_if(float num1, float num2, char op) {
     else if (op == '/') {
         if (num2 == 0) {
             printf("Erreur : division par zero !\n");
+            result = NAN;
+        }else {
+            result = num1 / num2;
         }
-        result = num1 / num2;
     }
     else {
         printf("Operation non valide !\n");
@@ -50,6 +53,7 @@ float calculatrice_case(float num1, float num2, char op){
         case '/':
             if (num2 == 0) {
                     puts("Division par zéro !");
+                    return NAN;
                 }
             return num1 / num2;
             break;
@@ -61,7 +65,7 @@ float calculatrice_case(float num1, float num2, char op){
 }
 
 
-
+/*
 int main(){
     
     float num1,num2;
@@ -91,3 +95,4 @@ int main(){
         return 0;
     }
 }
+*/
