@@ -18,6 +18,7 @@ int nbVoy(char *p) {
     return nbVoy;
 }
 
+/*
 int main(void) {
 
     char param[1025];
@@ -26,4 +27,4 @@ int main(void) {
 
     printf("%d", nbVoy(param));
     return 0;
-}
+}*/

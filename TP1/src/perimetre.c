@@ -1,4 +1,5 @@
 #include "stdio.h"
+#include <math.h>
 
 #define PI 3.14159f
 
@@ -14,12 +15,13 @@ float surface(float radius) {
     return surf;
 }
 
+/*
 int main(void) {
     float radius = 4.0f;
 
-    printf("Radius: %f\n", radius);
-    printf("Périmètre: %f\n", circumference(radius));
-    printf("Aire: %f\n", surface(radius));
+    printf("Radius: %.2f\n", radius);
+    printf("Périmètre: %.2f\n", circumference(radius));
+    printf("Aire: %.2f\n", surface(radius));
 
     return 0;
-}
+}*/
