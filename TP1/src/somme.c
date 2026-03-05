@@ -45,6 +45,7 @@ int WhileSumDecrement(int n) {
     return sum;
 }
 
+/*
 int main (void) {
     printf("Somme for incrémentation: %d\n", IncrementLoop(10));
     printf("Somme for décrémentation: %d\n", DecrementLoop(10));
@@ -52,5 +53,5 @@ int main (void) {
     printf("Somme While Decrementation: %d\n", WhileSumDecrement(10));
 
     return 0;
-}
+}*/
 
