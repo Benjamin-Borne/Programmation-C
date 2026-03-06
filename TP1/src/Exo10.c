@@ -1,18 +1,21 @@
+#include <math.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 
 int PGCD(int num1, int num2){
 
     if ((num1 == 0) || (num2 == 0)) {
+        printf("PGCD : %d\n", num1);
         return num2|num1;
     }else{
-        while (num1 != num2){
+        while (abs(num1) != abs(num2)){
 
-        if (num1 < num2){
-            int result = num2 - num1;
+        if ( abs(num1) < abs(num2) ){
+            int result = abs(num2) - abs(num1);
             num2 = result;
         }else {
-            int result = num1 - num2;
+            int result = abs(num1) - abs(num2);
             num1 = result;
         }
 
