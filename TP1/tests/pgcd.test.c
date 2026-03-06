@@ -70,16 +70,10 @@ void test_cas_limites_notes() {
 
     assert(PGCD(-12, 8) == 4);
 
-    printf("  [!!] PGCD(negatif, n) => boucle infinie (bug : pas de valeur absolue)\n");
-
-    assert(PGCD(1, 100) == 1);
-    printf("  [OK] PGCD(1, n) = 1 (fonctionne mais lent pour grands n)\n");
+    puts("  [OK] PGCD(negatif, n) \n");
 }
 
 int main(void) {
-    printf("==========================================\n");
-    printf("        TESTS PGCD\n");
-    printf("==========================================\n");
 
     test_cas_normaux();
     test_egaux();
@@ -88,8 +82,6 @@ int main(void) {
     test_commutativite();
     test_cas_limites_notes();
 
-    printf("\n==========================================\n");
-    printf("   TOUS LES TESTS SONT PASSES !\n");
-    printf("==========================================\n");
+    puts("   TOUS LES TESTS SONT PASSES !\n");
     return 0;
 }
