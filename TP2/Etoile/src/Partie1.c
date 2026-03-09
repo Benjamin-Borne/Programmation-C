@@ -10,6 +10,14 @@ int ligne(long nbCol){
     return 0;
 }
 
+int blank(long nbCol){
+    for(int i=0; i<nbCol; i++){
+        printf(" ");
+    }
+
+    return 0;
+}
+
 int printStar(long nbStar){
     for(int i=0; i<nbStar; i++){
         printf("*");
@@ -68,6 +76,84 @@ int secondFig(void){
     return 0;
 }
 
+int thirdFig(void){
+    char nbMax[4];
+    long i = 1;
+
+    puts("Nombres max : ");
+    fgets(nbMax, sizeof(nbMax), stdin);
+
+    long max = strtol(nbMax, NULL, 10);
+
+    while(i <= max){
+        blank(max - i);
+        printStar(i);
+        printf("\n");   
+        i++;
+    }
+
+    i = max - 1;
+
+    while(i >= 1){
+        blank(max - i);
+        printStar(i);
+        printf("\n");
+        i--;
+    }
+
+    return 0;
+}
+
+
+int fourthFig(void){
+
+char nbMax[4];
+    long i = 1;
+
+    puts("Nombres max : ");
+    fgets(nbMax, sizeof(nbMax), stdin);
+
+    long max = strtol(nbMax, NULL, 10);
+
+    while(i <= max){
+        blank(max - i);
+        printStar(2 * i - 1);
+        printf("\n");   
+        i++;
+    }
+
+    return 0;
+    
+}
+
+
+int fiveFig(void){
+    char nbMax[4];
+    long i = 1;
+
+    puts("Nombres max : ");
+    fgets(nbMax, sizeof(nbMax), stdin);
+
+    long max = strtol(nbMax, NULL, 10);
+
+    while(i <= max){
+        blank(max - i);
+        printStar(2 * i - 1);
+        printf("\n");   
+        i++;
+    }
+
+    i = max - 1;
+
+    while(i >= 1){
+        blank(max - i);
+        printStar(2 * i - 1);
+        printf("\n");
+        i--;
+    }
+
+    return 0;
+}
 
 
 
@@ -88,6 +174,17 @@ int main(void){
                 secondFig();
                 break;
 
+            case 3:
+                thirdFig();
+                break;
+
+            case 4:
+                fourthFig();
+                break;
+
+            case 5:
+                fiveFig(); 
+                break;
 
             default:
                 puts("Other Value \n");
