@@ -75,8 +75,38 @@ void MinimalSearchSort(float TAB[], int n, enum order by) {
     }
 }
 
+
+void InsertionSort(float TAB[], int n, enum order by) {
+    int i, j;
+    float current;
+    
+    printf("Tableau entré : ");
+    for (i=0; i<n; i++) {
+        printf("%.2f ", *(TAB + i));
+    }
+    puts("");
+
+    for (i = 1; i < n; ++i) {
+        current = TAB[i];
+        j = i - 1;
+
+        while ( ((j >= 0 && TAB[j] > current) && (by == ASC)) || ((j >= 0 && TAB[j] < current) && (by == DESC))) {
+            TAB[j + 1] = TAB[j];
+            j = j - 1;
+        }
+
+        TAB[j + 1] = current;
+    }
+
+    printf("Tableau sortant : ");
+    for (i=0; i<n; i++) {
+        printf("%.2f ", *(TAB + i));
+    }
+    puts("");
+}
+
 int main(void) {
     float TAB[] = {25, 1, 17, 34, 23, 16, 13, 27, 4, 44, 50, 14, 10, 7, 41, 15, 21, 35, 0, 49, 24, 9, 37, 20, 36, 8, 39, 31, 3, 18};
-    MinimalSearchSort(TAB, 30, DESC);
+    InsertionSort(TAB, 30, DESC);
     return 0;
 }
