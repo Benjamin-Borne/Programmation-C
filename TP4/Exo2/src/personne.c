@@ -13,13 +13,18 @@ typedef struct {
 
 Personne p[20];
 
-
+/*
+ * Vérifie si deux personnes sont égales (si chaque propriété est identique).
+ */
 int PersonneEqual(Personne a, Personne b) {
     int cmpr = strcmp(a.Nom, b.Nom) == 0 && strcmp(a.Prenom, b.Prenom) == 0 && a.date.jour == b.date.jour && a.date.mois == b.date.mois && a.date.annee == b.date.annee;
     return cmpr;
 }
 
-
+/*
+ * Ajoute une personne à la liste des personnes.
+ * Les caractéristiques sont rentrées au clavier par l'utilisateur.'
+ */
 void EnrollInput(void) {
     char Name[22];
     char Firstname[22];
@@ -57,7 +62,9 @@ void EnrollInput(void) {
     }
 }
 
-
+/*
+ * Affiche les informations des personnes une par une.
+ */
 void PrintInfo(void) {
     for (int i = 0; i < 20; i++) {
         if (p[i].Nom[0] == '\0') {
@@ -69,6 +76,10 @@ void PrintInfo(void) {
     puts("");
 }
 
+
+/*
+ * Permet a l'utilisateur de sélectionner une personne.
+ */
 Personne SelectPerson(void) {
     int choice;
     PrintInfo();
@@ -79,7 +90,9 @@ Personne SelectPerson(void) {
     return p[choice-1];
 }
 
-
+/*
+ * Tri les personnes en ordre croissant de leur date de naissance. Le tri effectué selon l'algorithme de tri par recherche de minimas successifs vu au TP2-2
+ */
 void SortName(void) {
     Personne temp;
 
@@ -112,6 +125,9 @@ void SortName(void) {
     }
 }
 
+/*
+ * Permet de modifier les caractéristiques d'une personnes. Les modifications sont rentrées au clavier par l'utilisateur.
+ */
 void EditRecord(Personne *personne) {
     char Name[22];
     char Firstname[22];
@@ -140,11 +156,13 @@ void EditRecord(Personne *personne) {
     personne->date.annee = annee;
 }
 
-
+/*
+ *Permet d'afficher les infos des personnes présente de la liste et demande à l'utilisateur s'il veut modifier une personne.'
+ */
 void FindModifyPeople(char nom[]) {
     Personne personnes[20];
     memset(personnes, 0, sizeof(personnes));
-    int indices[20]; // Stocker les indices dans p[] global
+    int indices[20];
     int count = 0;
     int choice;
 
@@ -152,7 +170,7 @@ void FindModifyPeople(char nom[]) {
         if (p[i].Nom[0] == '\0') break;
         if (strcmp(p[i].Nom, nom) == 0) {
             personnes[count] = p[i];
-            indices[count] = i; // Sauvegarder l'indice
+            indices[count] = i;
             count++;
         }
     }
@@ -180,7 +198,9 @@ void FindModifyPeople(char nom[]) {
     }
 }
 
-
+/*
+ * Permet de supprimer la personne passée en paramètre.
+ */
 void DeleteRecord(Personne personne) {
     for (int i = 0; i < 20; i++) {
         if (PersonneEqual(p[i], personne) == 1) {
