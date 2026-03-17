@@ -16,7 +16,7 @@ $(BIN)/main: $(SRC)/main.c $(SRC)/AfficherHello.c
 
 # Règle générique pour tous les autres programmes
 $(BIN)/%: $(SRC)/%.c
-	$(CC) $(CFLAGS) -o $@ $
+	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
 	$(RM) $(BIN)/*
