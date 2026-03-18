@@ -1,22 +1,22 @@
 #ifndef DEGRE_H
 #define DEGRE_H
 
-long CelsiusAKelvin(long c) {
+double CelsiusAKelvin(double c) {
     return c + 273;
 }
-long CelsiusAFahrenheit(long c) {
+double CelsiusAFahrenheit(double c) {
     return (c * 9 / 5) + 32;
 }
-long KelvinACelsius(long k) {
+double KelvinACelsius(double k) {
     return k - 273;
 }
-long KelvinAFahrenheit(long k) {
+double KelvinAFahrenheit(double k) {
     return (k - 273) * 9 / 5 + 32;
 }
-long FahrenheitACelsius(long f) {
+double FahrenheitACelsius(double f) {
     return (f - 32) * 5 / 9;
 }
-long FahrenheitAKelvin(long f) {
+double FahrenheitAKelvin(double f) {
     return (f - 32) * 5 / 9 + 273;
 }
 

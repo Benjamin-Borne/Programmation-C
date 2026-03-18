@@ -4,7 +4,7 @@
 #include "../../ex5_1/src/degre.h"
 
 long lireChoix() {
-    char choix[4];
+    int choix;
     puts("Choisissez une conversion :");
     puts("1. Celsius à Kelvin");
     puts("2. Celsius à Fahrenheit");
@@ -12,34 +12,37 @@ long lireChoix() {
     puts("4. Kelvin à Fahrenheit");
     puts("5. Fahrenheit à Celsius");
     puts("6. Fahrenheit à Kelvin");
+    puts("7. Quitter");
     puts("Votre choix : ");
-    fgets(choix, sizeof(choix), stdin);
-    return strtol(choix, NULL, 10);
+    scanf("%d", &choix);
+    return choix;
 }
 
-void executerChoix(long choix) {
-    char temp[4];
-    puts("Température à convertir : ");
-    fgets(temp, sizeof(temp), stdin);
-    long t = strtol(temp, NULL, 10);  // converti une seule fois
-    switch (choix) {                  // choix est déjà un long
+void executerChoix(int choix) {
+    double temp;
+    puts("Entrez la température à convertir : ");
+    scanf("%lf", &temp);
+    switch (choix) {
         case 1:
-            printf("%ld °C = %ld K\n",  t, CelsiusAKelvin(t));
+            printf("%.2lf °C = %.2lf K\n",  temp, CelsiusAKelvin(temp));
             break;
         case 2:
-            printf("%ld °C = %ld °F\n", t, CelsiusAFahrenheit(t));
+            printf("%.2lf °C = %.2lf °F\n", temp, CelsiusAFahrenheit(temp));
             break;
         case 3:
-            printf("%ld K = %ld °C\n",  t, KelvinACelsius(t));
+            printf("%.2lf K = %.2lf °C\n", temp, KelvinACelsius(temp));
             break;
         case 4:
-            printf("%ld K = %ld °F\n",  t, KelvinAFahrenheit(t));
+            printf("%.2lf K = %.2lf °F\n",  temp, KelvinAFahrenheit(temp));
             break;
         case 5:
-            printf("%ld °F = %ld °C\n", t, FahrenheitACelsius(t));
+            printf("%.2lf °F = %.2lf °C\n", temp, FahrenheitACelsius(temp));
             break;
         case 6:
-            printf("%ld °F = %ld K\n",  t, FahrenheitAKelvin(t));
+            printf("%.2lf °F = %.2lf K\n",  temp, FahrenheitAKelvin(temp));
+            break;
+        case 7:
+            exit(0);
             break;
         default:
             puts("Choix invalide.");
@@ -48,7 +51,10 @@ void executerChoix(long choix) {
 
 int main(void) {
     while (1) {
-        long choix = lireChoix();
+        int choix = lireChoix();
+        if (choix == 7){
+            exit(0);
+        } 
         executerChoix(choix);
     }
 }
