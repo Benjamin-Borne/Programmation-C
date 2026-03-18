@@ -8,8 +8,13 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
+<<<<<<< HEAD
       "cwd": "/home/kali/Documents/TP-C/Programmation-C/TP1/src",
       "program": "/home/kali/Documents/TP-C/Programmation-C/TP1/src/build/Debug/outDebug",
+=======
+      "cwd": "/home/kali/Documents/Programmation-C/TP1/src",
+      "program": "/home/kali/Documents/Programmation-C/TP1/src/build/Debug/outDebug",
+>>>>>>> ben
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
