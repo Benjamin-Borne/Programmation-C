@@ -25,7 +25,7 @@ int PGCD(int num1, int num2){
     }
 }
 
-/*
+
 int main(){
     int num1, num2;
 
@@ -34,7 +34,7 @@ int main(){
 
     PGCD(num1, num2);
 
-    
+
 
 }
-*/
+

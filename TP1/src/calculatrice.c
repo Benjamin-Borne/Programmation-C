@@ -1,6 +1,8 @@
 #include <math.h>
 #include <stdio.h>
 
+#define MAX_FLT_SIZE 64
+
 float calculatrice_if(float num1, float num2, char op) {
     float result;
 
@@ -65,24 +67,38 @@ float calculatrice_case(float num1, float num2, char op){
 }
 
 
-/*
+
 int main(){
     
     float num1,num2;
     char op;
+    char buf1[MAX_FLT_SIZE], buf2[MAX_FLT_SIZE];
+    float f1, f2;
+    char *endptr;
 
     
     while (1) {
         puts("Entrez une operation (+, -, *, /) ou 's' : ");
-        scanf(" %c", &op);   
+
+        if (scanf(" %c", &op) != 1) {
+            printf("\nErreur, entrez un un opérateur valide (+, -, *, /) ou 's'\n");
+        }
 
         if (op == 's') {
             return 0;
         }
 
         puts("Entrez deux nombres : ");
-        scanf("%f %f", &num1, &num2);
 
+        if(scanf("%63s %63s", buf1, buf2) != 1) {
+            puts("Réels invalides. Veuillez saisir des nombres réels valides.");
+        }
+
+        int tmp;
+        while ((tmp = getchar()) != '\n' && tmp != EOF);
+
+        errno = 0;
+        f1 = strtof(buf1, &endptr);
 
         puts(" ----- Calculatrice IF ----\n");
 
@@ -95,4 +111,3 @@ int main(){
         return 0;
     }
 }
-*/
