@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <errno.h>
 
 typedef struct {
     char Nom[20];
@@ -46,6 +48,13 @@ void EnrollInput(void) {
     puts("Quel est votre date de naissance ? (format: JJ/MM/AAAA)");
     scanf("%d/%d/%d", &jour, &mois, &annee);
 
+    if (mois < 1 || mois > 12) return;
+    if (jour < 1 || jour > 31) return;
+    if (annee < 1900 || annee > 2100) return;
+    if ((mois == 4 || mois == 6 || mois == 9 || mois == 11) && jour > 30) return;
+    if (mois == 2 && jour > 29) return;
+
+    
 
 
 
@@ -81,13 +90,27 @@ void PrintInfo(void) {
  * Permet a l'utilisateur de sélectionner une personne.
  */
 Personne SelectPerson(void) {
-    int choice;
+    char choice[4];
+    char *end;
     PrintInfo();
 
-    printf("Sélectionner une personne a supprimer: ");
-    scanf("%d", &choice);
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
 
-    return p[choice-1];
+    puts("Sélectionner une personne a supprimer: ");
+    fgets(choice, sizeof(choice), stdin);
+    errno = 0;
+    long idx = strtol(choice, &end, 10);
+    if (errno == ERANGE || end == choice || (*end != '\0' && *end != '\n')) {
+        fputs("Erreur : saisie invalide.\n", stderr);
+        return (Personne) {0};
+    }
+    if (idx < 1 || idx > 20 || p[idx-1].Nom[0] == '\0') {
+        fputs("Numéro hors de la liste.\n", stderr);
+        return (Personne) {0};
+    }
+
+    return p[idx-1];
 }
 
 /*
@@ -148,6 +171,12 @@ void EditRecord(Personne *personne) {
 
     puts("Quel est votre date de naissance ? (format: JJ/MM/AAAA)");
     scanf("%d/%d/%d", &jour, &mois, &annee);
+
+    if (mois < 1 || mois > 12) return;
+    if (jour < 1 || jour > 31) return;
+    if (annee < 1900 || annee > 2100) return;
+    if ((mois == 4 || mois == 6 || mois == 9 || mois == 11) && jour > 30) return;
+    if (mois == 2 && jour > 29) return;
 
     strcpy(personne->Nom, Name);
     strcpy(personne->Prenom, Firstname);
@@ -218,36 +247,50 @@ int main(void) {
     char Name[20];
     Personne temp;
     while (1) {
+
+        int c;
+        if (choice != '\n') {
+            while ((c = getchar()) != '\n' && c != EOF);
+        }
+
         puts("1. Enregistrer une personne");
         puts("2. Afficher les informations d'une personne");
         puts("3. Trouver une personne");
         puts("4. Supprimer une personne");
         puts("5. Trier par date de naissance");
-        puts("6. Quitter");
+        puts("6. Quitter");       
 
-        printf("Choisissez une option : ");
-        scanf("%d", &choice);
+        puts("Choisissez une option : ");
+        choice = fgetc(stdin); 
+        
+
+        int c;
+        if (choice != '\n') {
+            while ((c = getchar()) != '\n' && c != EOF);
+        }
+
         puts("");
+        
         switch (choice) {
-            case 1:
+            case 0x31:
                 EnrollInput();
                 break;
-            case 2:
+            case 0x32:
                 PrintInfo();
                 break;
-            case 3:
+            case 0x33:
                 printf("Rentrez le nom de la personne: ");
                 scanf("%s", Name);
                 FindModifyPeople(Name);
                 break;
-            case 4:
+            case 0x34:
                 temp = SelectPerson();
                 DeleteRecord(temp);
                 break;
-            case 5:
+            case 0x35:
                 SortName();
                 break;
-            case 6:
+            case 0x36:
                 return 0;
                 break;
             default:

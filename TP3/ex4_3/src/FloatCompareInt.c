@@ -1,7 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <errno.h>
+#include <math.h>
+
+#define EPSILON 1e-6f
 
 int compare(float num1, float num2) {
-    if (num1 == num2) {
+    if (fabsf(num1 - num2) < EPSILON) {
         return 1;
     } else {
         return 0;
@@ -9,14 +14,29 @@ int compare(float num1, float num2) {
 }
 
 int main(void) {
-
     int res;
-    float num1, num2;
+    char num1[32], num2[32];
+    char *end1, *end2;
 
-    scanf("%f %f", &num1, &num2);
-    res = compare(num1, num2);
+    puts("Choisir deux nombres : ");
+    fgets(num1, sizeof(num1), stdin);
+    fgets(num2, sizeof(num2), stdin);
 
+    errno = 0;
+    float val1 = strtof(num1, &end1);
+    if (errno == ERANGE || end1 == num1 || (*end1 != '\0' && *end1 != '\n')) {
+        fprintf(stderr, "Erreur : saisie invalide pour le premier nombre\n");
+        return 1;
+    }
+
+    errno = 0;
+    float val2 = strtof(num2, &end2);
+    if (errno == ERANGE || end2 == num2 || (*end2 != '\0' && *end2 != '\n')) {
+        fprintf(stderr, "Erreur : saisie invalide pour le deuxième nombre\n");
+        return 1;
+    }
+
+    res = compare(val1, val2);
     printf("Résultat : %d\n", res);
-
     return 0;
 }
