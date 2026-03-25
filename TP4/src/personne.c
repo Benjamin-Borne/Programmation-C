@@ -31,9 +31,7 @@ void EnrollInput(void) {
     char Name[22];
     char Firstname[22];
     int jour, mois, annee;
-
     int c;
-    while ((c = getchar()) != '\n' && c != EOF);
 
     puts("Quel est votre nom ?");
     fflush(stdout);
@@ -47,6 +45,7 @@ void EnrollInput(void) {
 
     puts("Quel est votre date de naissance ? (format: JJ/MM/AAAA)");
     scanf("%d/%d/%d", &jour, &mois, &annee);
+    while ((c = getchar()) != '\n' && c != EOF); 
 
     if (mois < 1 || mois > 12) return;
     if (jour < 1 || jour > 31) return;
@@ -55,10 +54,6 @@ void EnrollInput(void) {
     if (mois == 2 && jour > 29) return;
 
     
-
-
-
-
     for (int i = 0; i < 20; i++) {
         if (p[i].Nom[0] == '\0') {
             strcpy(p[i].Nom, Name);
@@ -90,12 +85,15 @@ void PrintInfo(void) {
  * Permet a l'utilisateur de sélectionner une personne.
  */
 Personne SelectPerson(void) {
-    char choice[4];
+    char choice[8];
     char *end;
-    PrintInfo();
 
-    int c;
-    while ((c = getchar()) != '\n' && c != EOF);
+    if (p[0].Nom[0] == '\0') {
+        puts("La liste est vide.");
+        return (Personne) {0};
+    }
+
+    PrintInfo();
 
     puts("Sélectionner une personne a supprimer: ");
     fgets(choice, sizeof(choice), stdin);
@@ -157,8 +155,6 @@ void EditRecord(Personne *personne) {
     int jour, mois, annee;
     int c;
 
-    while ((c = getchar()) != '\n' && c != EOF);
-
     puts("Quel est votre nom ?");
     fflush(stdout);
     fgets(Name, 22, stdin);
@@ -171,6 +167,7 @@ void EditRecord(Personne *personne) {
 
     puts("Quel est votre date de naissance ? (format: JJ/MM/AAAA)");
     scanf("%d/%d/%d", &jour, &mois, &annee);
+    while ((c = getchar()) != '\n' && c != EOF); 
 
     if (mois < 1 || mois > 12) return;
     if (jour < 1 || jour > 31) return;
@@ -194,6 +191,7 @@ void FindModifyPeople(char nom[]) {
     int indices[20];
     int count = 0;
     int choice;
+    int c;
 
     for (int i = 0; i < 20; i++) {
         if (p[i].Nom[0] == '\0') break;
@@ -221,6 +219,7 @@ void FindModifyPeople(char nom[]) {
 
     printf("Voulez modifier : (numéro de la personne à modifier, 0 si non) : ");
     scanf("%d", &choice);
+    while ((c = getchar()) != '\n' && c != EOF); 
 
     if (choice > 0 && choice <= count) {
         EditRecord(&p[indices[choice - 1]]);
@@ -237,7 +236,7 @@ void DeleteRecord(Personne personne) {
                 p[j] = p[j + 1];
             }
             memset(&p[19], 0, sizeof(Personne));
-            break;
+            return;
         }
     }
 }
@@ -247,11 +246,6 @@ int main(void) {
     char Name[20];
     Personne temp;
     while (1) {
-
-        int c;
-        if (choice != '\n') {
-            while ((c = getchar()) != '\n' && c != EOF);
-        }
 
         puts("1. Enregistrer une personne");
         puts("2. Afficher les informations d'une personne");
@@ -281,11 +275,15 @@ int main(void) {
             case 0x33:
                 printf("Rentrez le nom de la personne: ");
                 scanf("%s", Name);
+                while ((c = getchar()) != '\n' && c != EOF);
                 FindModifyPeople(Name);
                 break;
             case 0x34:
                 temp = SelectPerson();
-                DeleteRecord(temp);
+                printf("%d",temp.Nom[0]);
+                if (temp.Nom[0] != '\0') {
+                    DeleteRecord(temp);
+                }
                 break;
             case 0x35:
                 SortName();
