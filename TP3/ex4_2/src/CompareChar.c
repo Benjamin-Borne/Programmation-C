@@ -9,4 +9,3 @@ char compare(long int num1, long int num2) {
         return 'F';
     }
 }
-

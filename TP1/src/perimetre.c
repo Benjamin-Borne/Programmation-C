@@ -15,7 +15,11 @@ float surface(float radius) {
     return surf;
 }
 
+<<<<<<< HEAD
 /*
+=======
+
+>>>>>>> ben
 int main(void) {
     float radius = 4.0f;
 
@@ -24,4 +28,8 @@ int main(void) {
     printf("Aire: %.2f\n", surface(radius));
 
     return 0;
+<<<<<<< HEAD
 }*/
+=======
+}
+>>>>>>> ben

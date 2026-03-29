@@ -45,7 +45,11 @@ int WhileSumDecrement(int n) {
     return sum;
 }
 
+<<<<<<< HEAD
 /*
+=======
+
+>>>>>>> ben
 int main (void) {
     printf("Somme for incrémentation: %d\n", IncrementLoop(10));
     printf("Somme for décrémentation: %d\n", DecrementLoop(10));

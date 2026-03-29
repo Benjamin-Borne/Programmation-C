@@ -2,7 +2,11 @@
 #include <float.h>
 #include <math.h>
 #include <stdio.h>
+<<<<<<< HEAD
 #include "../src/Exo8.c"
+=======
+#include "../src/calculatrice.c"
+>>>>>>> ben
 
 #define EPSILON 1e-4f
 
@@ -130,7 +134,11 @@ void test_case_operateur_invalide() {
     puts("  [OK] case -> opérateur invalide (default)");
 }
 
+<<<<<<< HEAD
 int main(void) {
+=======
+int MainTest(void) {
+>>>>>>> ben
 
     puts("=== Tests calculatrice_if ===");
     test_if_addition();

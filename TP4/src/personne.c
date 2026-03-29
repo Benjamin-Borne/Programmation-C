@@ -45,7 +45,7 @@ void EnrollInput(void) {
 
     puts("Quel est votre date de naissance ? (format: JJ/MM/AAAA)");
     scanf("%d/%d/%d", &jour, &mois, &annee);
-    while ((c = getchar()) != '\n' && c != EOF); 
+    while ((c = getchar()) != '\n' && c != EOF);
 
     if (mois < 1 || mois > 12) return;
     if (jour < 1 || jour > 31) return;
@@ -53,7 +53,7 @@ void EnrollInput(void) {
     if ((mois == 4 || mois == 6 || mois == 9 || mois == 11) && jour > 30) return;
     if (mois == 2 && jour > 29) return;
 
-    
+
     for (int i = 0; i < 20; i++) {
         if (p[i].Nom[0] == '\0') {
             strcpy(p[i].Nom, Name);
@@ -167,7 +167,7 @@ void EditRecord(Personne *personne) {
 
     puts("Quel est votre date de naissance ? (format: JJ/MM/AAAA)");
     scanf("%d/%d/%d", &jour, &mois, &annee);
-    while ((c = getchar()) != '\n' && c != EOF); 
+    while ((c = getchar()) != '\n' && c != EOF);
 
     if (mois < 1 || mois > 12) return;
     if (jour < 1 || jour > 31) return;
@@ -183,7 +183,7 @@ void EditRecord(Personne *personne) {
 }
 
 /*
- *Permet d'afficher les infos des personnes présente de la liste et demande à l'utilisateur s'il veut modifier une personne.'
+ * Permet d'afficher les infos des personnes présente de la liste et demande à l'utilisateur s'il veut modifier une personne.'
  */
 void FindModifyPeople(char nom[]) {
     Personne personnes[20];
@@ -219,7 +219,7 @@ void FindModifyPeople(char nom[]) {
 
     printf("Voulez modifier : (numéro de la personne à modifier, 0 si non) : ");
     scanf("%d", &choice);
-    while ((c = getchar()) != '\n' && c != EOF); 
+    while ((c = getchar()) != '\n' && c != EOF);
 
     if (choice > 0 && choice <= count) {
         EditRecord(&p[indices[choice - 1]]);
@@ -252,11 +252,11 @@ int main(void) {
         puts("3. Trouver une personne");
         puts("4. Supprimer une personne");
         puts("5. Trier par date de naissance");
-        puts("6. Quitter");       
+        puts("6. Quitter");
 
         puts("Choisissez une option : ");
-        choice = fgetc(stdin); 
-        
+        choice = fgetc(stdin);
+
 
         int c;
         if (choice != '\n') {
@@ -264,7 +264,7 @@ int main(void) {
         }
 
         puts("");
-        
+
         switch (choice) {
             case 0x31:
                 EnrollInput();
@@ -277,7 +277,7 @@ int main(void) {
                 scanf("%s", Name);
                 while ((c = getchar()) != '\n' && c != EOF);
                 FindModifyPeople(Name);
-                break;
+            break;
             case 0x34:
                 temp = SelectPerson();
                 printf("%d",temp.Nom[0]);

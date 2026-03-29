@@ -12,4 +12,3 @@ int compare(float num1, float num2) {
         return 0;
     }
 }
-

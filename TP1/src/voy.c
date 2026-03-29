@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 int nbVoy(char *p) {
 
@@ -18,13 +19,26 @@ int nbVoy(char *p) {
     return nbVoy;
 }
 
+<<<<<<< HEAD
 /*
+=======
+
+>>>>>>> ben
 int main(void) {
 
     char param[1025];
 
-    fgets(param, 1024, stdin);
+    if (fgets(param, sizeof(param), stdin) == NULL) {
+        fprintf(stderr, "Erreur de lecture\n");
+        return 1;
+    }
+
+    param[strcspn(param, "\n")] = '\0';
 
     printf("%d", nbVoy(param));
     return 0;
+<<<<<<< HEAD
 }*/
+=======
+}
+>>>>>>> ben

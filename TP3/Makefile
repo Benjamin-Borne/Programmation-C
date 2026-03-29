@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> ben
 SubMakeDirs    = $(shell ls -d */)
 
 all::
