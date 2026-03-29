@@ -7,23 +7,19 @@ int nbVoy(char *p) {
 
     for (int i=0; *(p+i)!='#'; i++){
         char c = *(p+i);
-        if (c == 'a' || c == 'e' || c == 'i' || 
+        if (c == 'a' || c == 'e' || c == 'i' ||
             c == 'o' || c == 'u' || c == 'y' ||
             c == 'A' || c == 'E' || c == 'I' ||
             c == 'O' || c == 'U' || c == 'Y') {
-            
+
             nbVoy++;
-        }
+            }
     }
 
     return nbVoy;
 }
 
-<<<<<<< HEAD
-/*
-=======
 
->>>>>>> ben
 int main(void) {
 
     char param[1025];
@@ -37,8 +33,4 @@ int main(void) {
 
     printf("%d", nbVoy(param));
     return 0;
-<<<<<<< HEAD
-}*/
-=======
 }
->>>>>>> ben

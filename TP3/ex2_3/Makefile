@@ -14,10 +14,5 @@ all: $(BINS)
 	$(CC) $(CFLAGS) -o $(BIN)/$@ $<
 
 clean:
-<<<<<<< HEAD
-	$(RM) $(BIN)/*
-=======
 	$(RM) $(BIN)/*
 
-
->>>>>>> ben

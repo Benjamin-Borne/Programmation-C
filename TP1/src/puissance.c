@@ -12,17 +12,9 @@ int puissance(int x, int n) {
     return 0;
 }
 
-<<<<<<< HEAD
-/*
-=======
 
->>>>>>> ben
 int main(void) {
     printf("Puissance de 2 au cube: %d\n", puissance(2, 3));
 
     return 0;
-<<<<<<< HEAD
-}*/
-=======
 }
->>>>>>> ben
