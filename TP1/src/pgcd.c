@@ -7,6 +7,16 @@
 
 
 int PGCD(int num1, int num2){
+    /*
+    Programme pour calculer le PGCD de deux nombres entiers
+
+    Args :
+    num1 : premier nombre
+    num2 : deuxième nombre
+
+    Return :
+    PGCD des deux nombres
+    */
 
     if ((num1 == 0) || (num2 == 0)) {
         printf("PGCD : %d\n", num1);
@@ -30,6 +40,9 @@ int PGCD(int num1, int num2){
 
 
 int main(){
+    /*
+    Programme main pour tester le PGCD
+    */
     int num1, num2;
     long val1, val2;
     char buf1[64], buf2[64];

@@ -2,6 +2,15 @@
 #include <string.h>
 
 int nbVoy(char *p) {
+    /*
+    Compte le nombre de voyelles dans une chaîne de caractères
+
+    Args :
+    p : chaîne de caractères à analyser 
+
+    Return :
+    Nombre de voyelles dans la chaîne de caractères
+    */
 
     int nbVoy = 0;
 
@@ -21,6 +30,9 @@ int nbVoy(char *p) {
 
 
 int main(void) {
+    /*
+    Programme main pour tester le nombre de voyelles
+    */
 
     char param[1025];
 

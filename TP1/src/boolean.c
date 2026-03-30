@@ -1,6 +1,9 @@
 #include <stdio.h>
 
 int main(){
+    /*
+    Programme pour tester les opérateurs logiques et binaires
+    */
 
     // ET binaire
     printf(" 5 & 6 = %d\n", 5&6);

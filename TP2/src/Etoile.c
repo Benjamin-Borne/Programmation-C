@@ -4,7 +4,12 @@
 #include <string.h>
 
 int ligne(long nbCol){
+    /*
+    Affiche une ligne d'étoiles
 
+    Args :
+    nbCol : nombre de colonnes d'étoiles à afficher
+    */
     for(int i=0; i<nbCol; i++){
         printf("*");
     }
@@ -13,6 +18,12 @@ int ligne(long nbCol){
 }
 
 int blank(long nbCol){
+    /*
+    Affiche une ligne d'espaces
+
+    Args :
+    nbCol : nombre de colonnes d'espaces à afficher
+    */
     for(int i=0; i<nbCol; i++){
         printf(" ");
     }
@@ -21,6 +32,12 @@ int blank(long nbCol){
 }
 
 int printStar(long nbStar){
+    /*
+    Affiche une ligne d'étoiles
+
+    Args :
+    nbStar : nombre d'étoiles à afficher    
+    */
     for(int i=0; i<nbStar; i++){
         printf("*");
     }
@@ -30,6 +47,9 @@ int printStar(long nbStar){
 
 
 int premiereFig(void){
+    /* 
+    Programme principal pour faire la figure n°1
+    */
     char nbCol[4], nbLigne[4];
     char *endptr1, *endptr2;
     long l1, l2;
@@ -80,6 +100,9 @@ int premiereFig(void){
 
 
 int secondFig(void){
+    /*
+    Programme principal pour faire la figure n°2
+    */
     char nbMax[4];
     char *endptr1;
     long i = 1;
@@ -126,6 +149,9 @@ int secondFig(void){
 }
 
 int thirdFig(void){
+    /*
+    Programme principal pour faire la figure n°3
+    */
     char nbMax[4];
     long i = 1;
     long max;
@@ -176,7 +202,9 @@ int thirdFig(void){
 
 
 int fourthFig(void){
-
+    /*
+    Programme principal pour faire la figure n°4
+    */
     char nbMax[4];
     long i = 1;
     long max;
@@ -219,6 +247,9 @@ int fourthFig(void){
 
 
 int fiveFig(void){
+    /*
+    Programme principal pour faire la figure n°5
+    */
     char nbMax[4];
     long i = 1;
     long max;
@@ -270,6 +301,9 @@ int fiveFig(void){
 
 
 int main(void){
+    /*
+    Programme main pour choisir la figure à afficher
+    */
     int c;
 
     while (1){

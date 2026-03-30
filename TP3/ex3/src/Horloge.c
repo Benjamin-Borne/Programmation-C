@@ -4,6 +4,14 @@
 #include <errno.h>
 
 int horloge(long heures, long minutes, long secondes){
+    /*
+    Programme pour convertir l'heure en secondes
+
+    Args :  
+        heures (long) : nombre d'heures
+        minutes (long) : nombre de minutes
+        secondes (long) : nombre de secondes
+    */
 
     if (heures < 0 || minutes < 0 || secondes < 0) {
         fprintf(stderr, "Heures, minutes ou secondes invalides.");
@@ -17,6 +25,12 @@ int horloge(long heures, long minutes, long secondes){
 }
 
 long StringToLong(char input[]) {
+    /*
+    Permet de convertir un string en long
+
+    Args : 
+        input (char[]) : string à convertir
+    */
     char *endptr;
     long number;
 
@@ -40,6 +54,9 @@ long StringToLong(char input[]) {
 }
 
 int main(void){
+    /*
+    Programme main pour convertir une heure en secondes
+    */
     char heures[4], minutes[4], secondes[4];
     long hours, min, sec;
     puts("Heures : ");

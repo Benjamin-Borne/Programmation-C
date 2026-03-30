@@ -6,6 +6,17 @@
 #define MAX_FLT_SIZE 64
 
 float calculatrice_if(float num1, float num2, char op) {
+    /*
+    Programme pour réaliser une calculatrice avec des instructions if
+
+    Args :
+    num1 : premier nombre
+    num2 : deuxième nombre
+    op : opérateur
+
+    Return :
+    résultat de l'opération
+     */
     float result;
 
 
@@ -36,6 +47,17 @@ float calculatrice_if(float num1, float num2, char op) {
 
 
 float calculatrice_case(float num1, float num2, char op){
+    /*
+    Programme pour réaliser une calculatrice avec des instructions switch
+    
+    Args :
+    num1 : premier nombre
+    num2 : deuxième nombre
+    op : opérateur
+
+    Return :
+    résultat de l'opération
+    */
     if (op == 's') {
         return 0;
     }
@@ -70,6 +92,9 @@ float calculatrice_case(float num1, float num2, char op){
 
 
 int main(){
+    /*
+    Programme main pour réaliser une calculatrice 
+    */
 
     char op;
     char buf1[MAX_FLT_SIZE], buf2[MAX_FLT_SIZE];
