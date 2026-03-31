@@ -1,6 +1,13 @@
 #include <stdio.h>
 
 void echangerPointeurs(int **ppa, int **ppb){
+    /*
+    Permet d'échanger les pointeurs de deux entiers.
+
+    Args :
+        ppa : adresse du pointeur vers le premier entier
+        ppb : adresse du pointeur vers le second entier
+    */
     int *tmp;
 
     tmp  = *ppa;
@@ -10,6 +17,9 @@ void echangerPointeurs(int **ppa, int **ppb){
 
 
 int main(void){
+    /*
+    Fonction main du programme d'échange de pointeurs.
+    */
     int x, y;
     int *px, *py;
 

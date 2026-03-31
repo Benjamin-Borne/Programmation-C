@@ -6,6 +6,9 @@
 
 
 int main(void){
+    /*
+    Fonction main pour tester les conversions de températures
+    */
     char *endptr;
     double celsius, kelvin, fahrenheit;
     char input[64];

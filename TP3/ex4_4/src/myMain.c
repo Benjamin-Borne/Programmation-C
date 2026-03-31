@@ -5,6 +5,9 @@
 
 
 int main(void) {
+    /*
+    Fonction main pour comparer deux nombres float
+    */
     char res;
     char num1[32], num2[32];
     char *end1, *end2;

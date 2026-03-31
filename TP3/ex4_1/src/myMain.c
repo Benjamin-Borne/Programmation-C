@@ -6,6 +6,9 @@
 
 
 int main(void) {
+    /*
+    Programme main pour comparer deux nombres entiers
+    */
     int res;
     char num1[12], num2[12];
     char *end1, *end2;

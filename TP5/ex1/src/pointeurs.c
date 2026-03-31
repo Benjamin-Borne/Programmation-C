@@ -3,6 +3,7 @@
 *
 * lecture de l'adresse des éléments d'un tableau
 */
+
 #include <stdio.h>
 #define N 5
 

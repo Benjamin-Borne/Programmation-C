@@ -7,11 +7,18 @@
 #define N 3
 
 typedef struct maillon{
+    /*
+    Structure représentant un maillon de la liste chaînée.
+    */
     int x;
     struct maillon *suiv;    
 } maillon;
 
+
 void supprimerMaillon(maillon *lc, maillon *tete, int valeur){
+    /*
+    Fonction permettant de supprimer un maillon de la liste chaînée.
+    */
     lc = tete;
     maillon *prec = NULL;
 
@@ -35,6 +42,9 @@ void supprimerMaillon(maillon *lc, maillon *tete, int valeur){
 }
 
 int main(){
+    /*
+    Fonction main du programme de manipulation d'une liste chaînée.
+    */
     maillon *lc;
     maillon *tete;
     int cpt;

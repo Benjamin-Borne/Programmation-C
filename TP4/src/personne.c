@@ -4,6 +4,9 @@
 #include <errno.h>
 
 typedef struct {
+    /*
+    Structure pour définir une personne
+    */
     char Nom[20];
     char Prenom[20];
     struct DATE {
@@ -15,19 +18,27 @@ typedef struct {
 
 Personne p[20];
 
-/*
- * Vérifie si deux personnes sont égales (si chaque propriété est identique).
- */
+
 int PersonneEqual(Personne a, Personne b) {
+    /*
+    Vérifie si deux personnes sont égales (si chaque propriété est identique).
+
+    Args:
+        a (Personne): première personne
+        b (Personne): deuxième personne
+
+    Return:
+        1 si les personnes sont égales, 0 sinon
+    */
     int cmpr = strcmp(a.Nom, b.Nom) == 0 && strcmp(a.Prenom, b.Prenom) == 0 && a.date.jour == b.date.jour && a.date.mois == b.date.mois && a.date.annee == b.date.annee;
     return cmpr;
 }
 
-/*
- * Ajoute une personne à la liste des personnes.
- * Les caractéristiques sont rentrées au clavier par l'utilisateur.'
- */
 void EnrollInput(void) {
+    /*
+    Ajoute une personne à la liste des personnes. 
+    Les caractéristiques sont rentrées au clavier par l'utilisateur.
+    */
     char Name[22];
     char Firstname[22];
     int jour, mois, annee;
@@ -66,10 +77,11 @@ void EnrollInput(void) {
     }
 }
 
-/*
- * Affiche les informations des personnes une par une.
- */
+
 void PrintInfo(void) {
+    /*
+    Affiche les informations des personnes une par une.
+    */
     for (int i = 0; i < 20; i++) {
         if (p[i].Nom[0] == '\0') {
             break;
@@ -81,10 +93,13 @@ void PrintInfo(void) {
 }
 
 
-/*
- * Permet a l'utilisateur de sélectionner une personne.
- */
 Personne SelectPerson(void) {
+    /*
+    Permet à l'utilisateur de sélectionner une personne dans la liste.
+
+    Return:
+        La personne sélectionnée, ou une personne vide si la sélection est invalide.
+    */
     char choice[8];
     char *end;
 
@@ -111,10 +126,12 @@ Personne SelectPerson(void) {
     return p[idx-1];
 }
 
-/*
- * Tri les personnes en ordre croissant de leur date de naissance. Le tri effectué selon l'algorithme de tri par recherche de minimas successifs vu au TP2-2
- */
+
 void SortName(void) {
+    /*
+     * Tri les personnes en ordre croissant de leur date de naissance.
+     * Le tri est effectué selon l'algorithme de tri par recherche de minimas successifs vu au TP2-2
+     */
     Personne temp;
 
 
@@ -146,10 +163,15 @@ void SortName(void) {
     }
 }
 
-/*
- * Permet de modifier les caractéristiques d'une personnes. Les modifications sont rentrées au clavier par l'utilisateur.
- */
+
 void EditRecord(Personne *personne) {
+    /*
+    Permet de modifier les caractéristiques d'une personnes. 
+    Les modifications sont rentrées au clavier par l'utilisateur.
+
+    Args :
+        personne (Personne*): la personne à modifier
+    */
     char Name[22];
     char Firstname[22];
     int jour, mois, annee;
@@ -182,10 +204,14 @@ void EditRecord(Personne *personne) {
     personne->date.annee = annee;
 }
 
-/*
- * Permet d'afficher les infos des personnes présente de la liste et demande à l'utilisateur s'il veut modifier une personne.'
- */
+
 void FindModifyPeople(char nom[]) {
+    /*
+    Permet d'afficher les infos des personnes présente de la liste et demande à l'utilisateur s'il veut modifier une personne.
+    
+    Args:
+        nom (char[]): le nom des personnes à trouver
+    */
     Personne personnes[20];
     memset(personnes, 0, sizeof(personnes));
     int indices[20];
@@ -226,10 +252,14 @@ void FindModifyPeople(char nom[]) {
     }
 }
 
-/*
- * Permet de supprimer la personne passée en paramètre.
- */
+
 void DeleteRecord(Personne personne) {
+    /*
+    Permet de supprimer la personne passée en paramètre.
+
+    Args:
+        personne (Personne): la personne à supprimer
+    */
     for (int i = 0; i < 20; i++) {
         if (PersonneEqual(p[i], personne) == 1) {
             for (int j = i; j < 19; j++) {
@@ -242,6 +272,9 @@ void DeleteRecord(Personne personne) {
 }
 
 int main(void) {
+    /*
+    Fonction main du programme de gestion des personnes
+    */
     int choice;
     char Name[20];
     Personne temp;

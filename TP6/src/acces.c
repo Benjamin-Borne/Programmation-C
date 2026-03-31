@@ -8,6 +8,9 @@
 #define MAX_PERSONNES 100
 
 typedef struct {
+    /*
+    Structure pour une personne
+     */
     char nom[20];
     char prenom[20];
     char badge[5];
@@ -18,23 +21,42 @@ typedef struct {
 
 
 typedef struct maillon{
+    /* 
+    Structure pour un maillon de la liste
+    */
     struct maillon* suivant;
     struct maillon* precedent;
     personne* personne; 
 } maillon;
 
+
 typedef struct {
+    /*
+    Structure pour une file
+    */
     maillon* tete;
     maillon* queue;
 } file;
 
 
 void initialiserFile(file* f) {
+    /*
+    Permet d'initialiser une fille
+
+    Args : 
+    - f : pointeur vers la file à initialiser
+    */
     f->tete = NULL;
     f->queue = NULL;
 }
 
 void afficherListe(file* f) {
+    /*
+    Fonction pour afficher la liste des personnes
+
+    Args :
+    - f : pointeur vers la file à afficher
+    */
     maillon* courant = f->tete;
     while (courant != NULL) {
         printf("Nom: %s, Prénom: %s, Badge: %s, Code Secret: %s, Dernier Passage: %s\n",
@@ -48,6 +70,9 @@ void afficherListe(file* f) {
 }
 
 personne* creerPersonne() {
+    /*
+    Fonction pour créer une personne
+    */
     personne* p = (personne*)malloc(sizeof(personne));
     if (p == NULL) {
         fprintf(stderr, "Erreur d'allocation mémoire\n");
@@ -67,6 +92,12 @@ personne* creerPersonne() {
     return p;
 }
 void ajouterPersonne(file* f) {
+    /*
+    Fonction pour ajouter une personne à la file
+
+    Args:
+    - f : pointeur vers la file à laquelle ajouter la personne
+    */
     personne* p = creerPersonne();
     maillon* nouveauMaillon = (maillon*)malloc(sizeof(maillon));
     nouveauMaillon->personne = p;
@@ -84,6 +115,13 @@ void ajouterPersonne(file* f) {
 }
 
 void supprimerPersonne(file* f, char* badge) {
+    /*
+    FOnction pour supprimer une personne de la file en fonction de son badge
+
+    Args:
+    - f : pointeur vers la file de laquelle supprimer la personne
+    - badge : badge de la personne à supprimer
+    */
     maillon* courant = f->tete;
     while (courant != NULL) {
         if (strcmp(courant->personne->badge, badge) == 0) {
@@ -106,6 +144,14 @@ void supprimerPersonne(file* f, char* badge) {
 }
 
 void modifierCodeSecret(file* f, char* badge, char* nouveauCode) {
+    /*
+    Fonction pour modifier le code secret d'une personne en fonction de son badge
+
+    Args:
+    - f : pointeur vers la file dans laquelle modifier le code secret
+    - badge : badge de la personne dont on veut modifier le code secret
+    - nouveauCode : nouveau code secret à attribuer à la personne
+    */
     maillon* courant = f->tete;
     while (courant != NULL) {
         if (strcmp(courant->personne->badge, badge) == 0) {
@@ -119,6 +165,14 @@ void modifierCodeSecret(file* f, char* badge, char* nouveauCode) {
 }
 
 void controleAcces(file* f, char* badge, char* codeSecret) {
+    /*
+    Fonction pour contrôler l'accès d'une personne en fonction de son badge et de son code secret
+
+    Args:
+    - f : pointeur vers la file dans laquelle contrôler l'accès
+    - badge : badge de la personne à contrôler
+    - codeSecret : code secret de la personne à contrôler
+    */
     maillon* courant = f->tete;
     while (courant != NULL) {
         if (strcmp(courant->personne->badge, badge) == 0) {
@@ -139,6 +193,13 @@ void controleAcces(file* f, char* badge, char* codeSecret) {
 
 
 void sauvegarderListe(file* f, const char* nomFichier) {
+    /*
+    Fonction pour sauvegarder la liste des personnes dans un fichier
+
+    Args:
+    - f : pointeur vers la file à sauvegarder
+    - nomFichier : nom du fichier dans lequel sauvegarder la liste
+    */
     FILE* fichier = fopen(nomFichier, "w");
     if (fichier == NULL) {
         fprintf(stderr, "Erreur d'ouverture du fichier\n");
@@ -160,6 +221,13 @@ void sauvegarderListe(file* f, const char* nomFichier) {
 }
 
 void lireFichier(file* f, const char* nomFichier) {
+    /*
+    Fonction pour lire la liste des personnes depuis un fichier
+
+    Args:
+    - f : pointeur vers la file dans laquelle charger la liste
+    - nomFichier : nom du fichier depuis lequel charger la liste
+    */
     FILE* fichier = fopen(nomFichier, "r");
     if (fichier == NULL) {
         fprintf(stderr, "Erreur d'ouverture du fichier\n");
@@ -190,6 +258,9 @@ void lireFichier(file* f, const char* nomFichier) {
 
 
 int main(){
+    /*
+    Fonction main du programme pour gérer les personnes et le contrôle d'accès
+    */
     int choix;
 
     file f;

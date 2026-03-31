@@ -8,6 +8,9 @@
 #include <stdio.h>
 
 void echanger(int *a, int *b){
+    /*
+    Fonction d'échange de deux entiers.
+    */
     int tmp;
 
     tmp = *a;
@@ -17,6 +20,9 @@ void echanger(int *a, int *b){
 
 
 int main(void){
+    /*
+    Fonction main du programme d'échange de pointeurs.
+    */
     int x,y;
 
     x = 12;

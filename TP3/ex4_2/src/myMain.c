@@ -5,6 +5,9 @@
 
 
 int main(void) {
+    /*
+    Fonction main pour comparer deux nombres entiers
+    */
     char res;
     char num1[12], num2[12];
     char *end1, *end2;
